@@ -41,3 +41,21 @@ class Solution {
         return true;
     }
 }
+
+*****************************************
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        Map<String, List<String>> map = new HashMap<>();
+        
+        for (int i=0;i<strs.length;i++) {
+            char[] temp=new char[26];
+            char[] charArray=strs[i].toCharArray();
+            for (char c:charArray) temp[c-'a']++;
+            String k = String.valueOf(temp);
+            if (!map.containsKey(k)) map.put(k,new ArrayList<String>());
+            map.get(k).add(strs[i]);
+        }
+        return new ArrayList<>(map.values());
+    }
+}
